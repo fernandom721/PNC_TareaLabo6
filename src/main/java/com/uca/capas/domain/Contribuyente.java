@@ -1,6 +1,8 @@
 package com.uca.capas.domain;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -16,7 +18,7 @@ public class Contribuyente {
     private Integer c_contribuyente;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_importancia")
     private Importancia importancia;
 
@@ -32,6 +34,7 @@ public class Contribuyente {
     @Size(max= 14, message = "El campo no debe de tener mas de 14 caracteres")
     private int s_nit;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "f_fecha_ingreso")
     private Date f_fecha_ingreso;
 

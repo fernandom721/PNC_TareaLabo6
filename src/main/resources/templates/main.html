@@ -5,16 +5,38 @@
     <title>Main</title>
 </head>
 <body>
+<!--
     <table>
         <th>id Importancia</th>
         <th>Importancia</th>
 
-    <th:block th:each="importancia , row:${importancia}">
+    <th:block th:action="@{main}" th:each="importancia , row:${importancia}">
         <tr>
             <th th:text="${importancia.c_importancia}"/>
             <th th:text="${importancia.s_importancia}"/>
         </tr>
     </th:block>
     </table>
+    -->
+    <h2>Ingrese un nuevo contribuyente</h2>
+<form th:action="@{/form}" th:object="${contribuyente}" method="post">
+    <label>Nombre: </label>
+    <input type="text" th:field="{* s_nombre}"><br>
+
+    <label>Apellido: </label>
+    <input type="text" th:field="{* s_apellido}"><br>
+    <label>NIT: </label>
+    <input type="number" th:field="{* s_nit}"><br>
+    <label>Importancia: </label>
+    <select th:field="*{importancia.c_importancia}" >
+        <option th:each="imp : ${importanciaList}" th:value="${imp.c_importancia}" th:text="${imp.s_importancia}"></option>
+    </select>
+    <br>
+    <input type="submit" value="Agregar">
+</form>
+<br>
+<a type="button" href="contribuyentes.html" >Lista de Contribuyentes</a>
+
+
 </body>
 </html>

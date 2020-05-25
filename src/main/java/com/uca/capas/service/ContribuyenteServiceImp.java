@@ -24,4 +24,9 @@ public class ContribuyenteServiceImp implements ContribuyenteService{
     public void save(Contribuyente contribuyente) throws DataAccessException {
         contribuyenteDAO.save(contribuyente);
     }
+
+    @Override
+    public void insert(Contribuyente contribuyente) throws DataAccessException {
+        contribuyenteDAO.insert(contribuyente);
+    }
 }
